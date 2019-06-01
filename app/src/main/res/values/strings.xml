@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">ConnectHuntApp</string>
+
+    <string name="fogot_pass">Esqueceu sua Senha?</string>
+    <string name="ask">Não possui uma Conta?</string>
+    <string name="signin">Entrar</string>
+    <string name="login_reg_btn_text">Criar uma Conta</string>
+    <string name="login_btn_text">Login</string>
+    <string name="pass_hint">Senha</string>
+    <string name="email_hint">Email</string>
+    <string name="login_logo_desc">Connective Hunter</string>
+    <string name="connect">Connective Hunter</string>
+    <string name="signup">Cria Conta</string>
+    <string name="professional">Profissional</string>
+    <string name="company">Company</string>
+    <string name="reg_pass_text">Senha</string>
+    <string name="recup_senha">Recuperar Senha</string>
+    <string name="email_recup">Informe seu Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="continuar">Continuar</string>
+    <string name="vague_status">Status da Vaga</string>
+    <string name="about_company">Sobre a Empresa</string>
+    <string name="fill">Vaga</string>
+    <string name="my_vacancy">Minha Vaga</string>
+    <string name="curriculum_view">A empresa visualizou seu curriculo</string>
+    <string name="send_email">Enviar</string>
+
+
+    <string-array name="grau_competencia">
+        <item>Básico</item>
+        <item>Mediano</item>
+        <item>Avançado</item>
+        <item>Especialista</item>
+    </string-array>
+
+    <string-array name="Idiomas">
+        <item>Ingles</item>
+        <item>Frances</item>
+        <item>Japones</item>
+        <item>Chines</item>
+        <item>Espanhol</item>
+    </string-array>
+
+    <string-array name="nivel_idioma">
+        <item>Básico</item>
+        <item>Intermediário</item>
+        <item>Avançado</item>
+        <item>Fluente</item>
+    </string-array>
+
+    <string-array name="ufs">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AM</item>
+        <item>AP</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "822525322189",
+    "firebase_url": "https://connecthuntapp-9b851.firebaseio.com",
+    "project_id": "connecthuntapp-9b851",
+    "storage_bucket": "connecthuntapp-9b851.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822525322189:android:1a7aa11e518b9e8a",
+        "android_client_info": {
+          "package_name": "com.example.connecthuntapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822525322189-770poqj2ls59m57kamju5v657iv0um3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.connecthuntapp",
+            "certificate_hash": "65119c7c6acc1af52aee622d2ffa899843f71bd2"
+          }
+        },
+        {
+          "client_id": "822525322189-2pamo3arrv3j0eqp62ovbik1ojglsts7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo2kkJoAMDAFfzZMZ1eTO81vjnVVLYKVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822525322189-2pamo3arrv3j0eqp62ovbik1ojglsts7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

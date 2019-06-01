@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.connecthuntapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activitys.ViewCurriculumProfessionalActivity"></activity>
+        <activity android:name=".Activitys.CompanyRequirementActivity" />
+        <activity android:name=".Activitys.ProfessionalLanguageActivity" />
+        <activity android:name=".Activitys.SituationVagaActivity" />
+        <activity android:name=".Activitys.DetailsJobActivity" />
+        <activity android:name=".Activitys.ListVagasActivity" />
+        <activity android:name=".Activitys.CompanyAboutActivity" />
+        <activity android:name=".Activitys.CompanyDescriptionActivity" />
+        <activity android:name=".Activitys.DeficiencyActivity" />
+        <activity android:name=".Activitys.SkillActivity" />
+        <activity android:name=".Activitys.ExperienceProfessionalActivity" />
+        <activity android:name=".Activitys.ProfessionalPersonalDataActivity" />
+        <activity android:name=".Activitys.ProfessionalGoalActivity" />
+        <activity android:name=".Activitys.MainCompanyActivity" />
+        <activity android:name=".Activitys.RecoverPasswordActivity" />
+        <activity android:name=".Activitys.RegisterActivity" />
+        <activity android:name=".Activitys.MainActivity" />
+        <activity android:name=".Activitys.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

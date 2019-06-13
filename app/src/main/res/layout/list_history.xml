@@ -76,6 +76,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Candidatura Confirmada"
+        android:textSize="13sp"
         android:fontFamily="sans-serif-condensed-light"
         android:textColor="@color/green"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,47 +90,75 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/checked" />
+        app:srcCompat="@mipmap/ic_check_finish" />
 
     <TextView
-        android:id="@+id/textView44"
+        android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Visualizar Situação da Vaga"
+        android:text="Candidatura Finalizada"
+        android:textColor="@color/green"
+        android:textSize="13sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView43"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/visualized_wating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:textColor="#AAAAAA"
+        android:textSize="13sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Aguardando Visualização"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="17dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/ic_action_show" />
-
     <TextView
-        android:id="@+id/visualized_ok"
+        android:id="@+id/tv_visualized"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/green"
+        android:textSize="13sp"
+        android:visibility="gone"
         android:fontFamily="sans-serif-condensed-light"
         android:text="Currículo Visualizado"
-        android:textColor="@color/green"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView43"
+        />
+
+    <ImageView
+        android:id="@+id/curriculum_visualized"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@mipmap/ic_check_finish" />
+
+    <ImageView
+        android:id="@+id/curriculum_not_visualized"
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/ic_action_clock" />
+
 
 </android.support.constraint.ConstraintLayout>

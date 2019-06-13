@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,11 +32,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.connecthuntapp.Activitys.DeficiencyActivity;
-import com.example.connecthuntapp.Activitys.ExperienceProfessionalActivity;
+import com.example.connecthuntapp.Activitys.ProfessionalExperienceActivity;
 import com.example.connecthuntapp.Activitys.ProfessionalGoalActivity;
 import com.example.connecthuntapp.Activitys.ProfessionalLanguageActivity;
 import com.example.connecthuntapp.Activitys.ProfessionalPersonalDataActivity;
-import com.example.connecthuntapp.Activitys.SkillActivity;
+import com.example.connecthuntapp.Activitys.ProfessionalSkillActivity;
 import com.example.connecthuntapp.Adapters.ExperienceProfessionalAdapter;
 import com.example.connecthuntapp.Adapters.LanguageAdapter;
 import com.example.connecthuntapp.Adapters.SkillAdapter;
@@ -47,9 +46,7 @@ import com.example.connecthuntapp.Models.Skill;
 import com.example.connecthuntapp.R;
 import com.example.connecthuntapp.Utilities.Tags;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -102,7 +99,7 @@ public class ProfessionalCurriculumFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_professional_curriculum, container, false);
 
         findView(v);
-        firebaseConfig();
+        fireBaseConfig();
 
         getProfessionalGoal();
         getProfessionalPersonalData();
@@ -197,18 +194,20 @@ public class ProfessionalCurriculumFragment extends Fragment {
     }
 
     private void setAlertNotifyProfessionalDeficiency() {
-        firebaseFirestore.collection(tag.getKEY_PROFESSIONAL()).document(user_id).collection(tag.getKEY_DEFICIENCY()).document(user_id).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firebaseFirestore.collection(tag.getKEY_PROFESSIONAL()).document(user_id).collection(tag.getKEY_DEFICIENCY()).document(user_id)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (task.getResult().exists()) {
-                                alert_deficiency.setVisibility(View.GONE);
-                                tv_alert_deficiency.setVisibility(View.GONE);
-                            } else {
-                                alert_deficiency.setVisibility(View.VISIBLE);
-                                tv_alert_deficiency.setVisibility(View.VISIBLE);
-                            }
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w(tag.getKEY_ERROR(),"Listen failed",e);
+                            return;
+                        }
+                        if (documentSnapshot.exists()){
+                            alert_deficiency.setVisibility(View.GONE);
+                            tv_alert_deficiency.setVisibility(View.GONE);
+                        } else {
+                            alert_deficiency.setVisibility(View.VISIBLE);
+                            tv_alert_deficiency.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -333,9 +332,34 @@ public class ProfessionalCurriculumFragment extends Fragment {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                languageAdapter.deleteItem(viewHolder.getAdapterPosition());
-                Toast.makeText(getContext(), "Idioma deletado", Toast.LENGTH_LONG).show();
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                final View view = inflater.inflate(R.layout.alert_ask, null);
+
+                Button excluir = view.findViewById(R.id.excluir);
+                Button cancel = view.findViewById(R.id.cancel);
+
+                final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
+                        .setView(view)
+                        .create();
+
+                excluir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        languageAdapter.deleteItem(viewHolder.getAdapterPosition());
+                        Toast.makeText(getContext(), "Idioma deletado", Toast.LENGTH_LONG).show();
+                        alertDialog.dismiss();
+                    }
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        languageAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
             }
         }).attachToRecyclerView(recyclerView);
         languageAdapter.setOnItemClickListener(new LanguageAdapter.OnItemClickListener() {
@@ -375,7 +399,7 @@ public class ProfessionalCurriculumFragment extends Fragment {
                 final View view = inflater.inflate(R.layout.alert_ask, null);
 
                 Button excluir = view.findViewById(R.id.excluir);
-                Button cancel = view.findViewById(R.id.cancelar);
+                Button cancel = view.findViewById(R.id.cancel);
 
                 final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
                         .setView(view)
@@ -386,11 +410,13 @@ public class ProfessionalCurriculumFragment extends Fragment {
                     public void onClick(View v) {
                         experienceAdapter.deleteItem(viewHolder.getAdapterPosition());
                         Toast.makeText(getContext(), "Experiencia deletada", Toast.LENGTH_LONG).show();
+                        alertDialog.dismiss();
                     }
                 });
                 cancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        experienceAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
                         alertDialog.dismiss();
                     }
                 });
@@ -429,9 +455,35 @@ public class ProfessionalCurriculumFragment extends Fragment {
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                skillAdapter.deleteItem(viewHolder.getAdapterPosition());
-                Toast.makeText(getContext(), "Habilidade deletada", Toast.LENGTH_LONG).show();
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
+
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                final View view = inflater.inflate(R.layout.alert_ask, null);
+
+                Button excluir = view.findViewById(R.id.excluir);
+                Button cancel = view.findViewById(R.id.cancel);
+
+                final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
+                        .setView(view)
+                        .create();
+
+                excluir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        skillAdapter.deleteItem(viewHolder.getAdapterPosition());
+                        Toast.makeText(getContext(), "Habilidade deletada", Toast.LENGTH_LONG).show();
+                        alertDialog.dismiss();
+                    }
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        skillAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                alertDialog.show();
             }
         }).attachToRecyclerView(recyclerView);
         skillAdapter.setOnItemClickListener(new SkillAdapter.OnItemClickListener() {
@@ -441,17 +493,6 @@ public class ProfessionalCurriculumFragment extends Fragment {
             }
         });
     }
-
-    private void sendToExperienceProfessional() {
-        Intent intent = new Intent(getContext(), ExperienceProfessionalActivity.class);
-        startActivity(intent);
-    }
-
-    private void sendToProfessionalPersonData() {
-        Intent intent = new Intent(getContext(), ProfessionalPersonalDataActivity.class);
-        startActivity(intent);
-    }
-
     private void getProfessionalData() {
         String user_id = mAuth.getCurrentUser().getUid();
 
@@ -469,7 +510,6 @@ public class ProfessionalCurriculumFragment extends Fragment {
                         String image = documentSnapshot.getString(tag.getKEY_PHOTO());
                         mSelectedUri = Uri.parse(image);
                         RequestOptions requestOptions = new RequestOptions();
-                        requestOptions.placeholder(R.drawable.profile);
                         Glide.with(ProfessionalCurriculumFragment.this).setDefaultRequestOptions(requestOptions).load(image).into(img_select);
                     } else {
                         Log.d(tag.getKEY_ERROR(), "No documents found.");
@@ -548,29 +588,29 @@ public class ProfessionalCurriculumFragment extends Fragment {
                         visual.setTextColor(Color.parseColor("#DDDDDD"));
                     }
 
-                    String auditiva_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_HEARING());
-                    if (auditiva_def.equals(tag.getKEY_CHECK())) {
+                    String hearing_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_HEARING());
+                    if (hearing_def.equals(tag.getKEY_CHECK())) {
                         auditiva.setTextColor(Color.parseColor("#1a237e"));
                     } else {
                         auditiva.setTextColor(Color.parseColor("#DDDDDD"));
                     }
 
-                    String fisica_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_PHYSICAL());
-                    if (fisica_def.equals(tag.getKEY_CHECK())) {
+                    String physical_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_PHYSICAL());
+                    if (physical_def.equals(tag.getKEY_CHECK())) {
                         fisica.setTextColor(Color.parseColor("#1a237e"));
                     } else {
                         fisica.setTextColor(Color.parseColor("#DDDDDD"));
                     }
 
-                    String intelectual_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_INTELLECTUAL());
-                    if (intelectual_def.equals(tag.getKEY_CHECK())) {
+                    String intellectual_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_INTELLECTUAL());
+                    if (intellectual_def.equals(tag.getKEY_CHECK())) {
                         intelectual.setTextColor(Color.parseColor("#1a237e"));
                     } else {
                         intelectual.setTextColor(Color.parseColor("#DDDDDD"));
                     }
 
-                    String naoPossuo_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_NONE());
-                    if (naoPossuo_def.equals(tag.getKEY_CHECK())) {
+                    String none_def = documentSnapshot.getString(tag.getKEY_DEFICIENCY_NONE());
+                    if (none_def.equals(tag.getKEY_CHECK())) {
                         naoPossuo.setTextColor(Color.parseColor("#1a237e"));
                     } else {
                         naoPossuo.setTextColor(Color.parseColor("#DDDDDD"));
@@ -581,6 +621,15 @@ public class ProfessionalCurriculumFragment extends Fragment {
         });
     }
 
+    private void sendToExperienceProfessional() {
+        Intent intent = new Intent(getContext(), ProfessionalExperienceActivity.class);
+        startActivity(intent);
+    }
+
+    private void sendToProfessionalPersonData() {
+        Intent intent = new Intent(getContext(), ProfessionalPersonalDataActivity.class);
+        startActivity(intent);
+    }
     private void sendToProfessionalGoal() {
         Intent intent = new Intent(getContext(), ProfessionalGoalActivity.class);
         startActivity(intent);
@@ -592,7 +641,7 @@ public class ProfessionalCurriculumFragment extends Fragment {
     }
 
     private void sendToSkill() {
-        Intent intent = new Intent(getContext(), SkillActivity.class);
+        Intent intent = new Intent(getContext(), ProfessionalSkillActivity.class);
         startActivity(intent);
     }
 
@@ -601,7 +650,7 @@ public class ProfessionalCurriculumFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void firebaseConfig() {
+    private void fireBaseConfig() {
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
     }

@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.connecthuntapp.Models.History;
 import com.example.connecthuntapp.R;
 import com.example.connecthuntapp.Utilities.Tags;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +22,10 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.annotation.Nullable;
 
 public class SituationVagaActivity extends AppCompatActivity {
@@ -29,12 +33,12 @@ public class SituationVagaActivity extends AppCompatActivity {
     private Tags tag = new Tags();
 
     private String history_id;
-    private LinearLayout linearLayout11;
-    private ImageView checked, not_x, back,checked2,not_x2;
-    private TextView finish, feedback,visualized, complete, text_visualized, aguardando, vagaName, companyName, description, aboutCompany, requirement, minSalary, maxSalary, time;
+    private LinearLayout collum_linear;
+    private ImageView checked, not_checked, back, checked_2, not_checked_2, img_approved, img_refused;
+    private TextView finish, feedback, visualized, vagaName, companyName, description, aboutCompany, requirement, minSalary, maxSalary, time;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
-    private TextView tv_empresa_feedback;
+    private TextView tv_company_feedback, approved, refused, dateVisualized, dateComment, dateApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +59,85 @@ public class SituationVagaActivity extends AppCompatActivity {
 
         getData();
 
+
+        firebaseFirestore.collection(tag.getKEY_HISTORY()).document(history_id)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w(tag.getKEY_ERROR(), "Listen failed.", e);
+                            return;
+                        }
+                        if (documentSnapshot !=null && documentSnapshot.exists()) {
+                            History history = documentSnapshot.toObject(History.class);
+
+                            dateApply.setText(dateFormat(history.getDateApply()));
+                        }else {
+                            Log.d(tag.getKEY_ERROR(),"No document");
+                        }
+                    }
+                });
+
+        firebaseFirestore.collection(tag.getKEY_HISTORY()).document(history_id)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w(tag.getKEY_ERROR(), "Listen failed.", e);
+                            return;
+                        }
+                        if (documentSnapshot !=null && documentSnapshot.exists()) {
+                            if (!documentSnapshot.getString(tag.getKEY_FEEDBACK_COMMENT()).equals("")) {
+                                History history = documentSnapshot.toObject(History.class);
+
+                                dateComment.setText(dateFormat(history.getDateComment()));
+                            } else {
+                                Log.d(tag.getKEY_ERROR(), "No Document");
+
+                            }
+                        }
+                    }
+                });
+
+        firebaseFirestore.collection(tag.getKEY_HISTORY()).document(history_id)
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    if (doc.getBoolean(tag.getKEY_SITUATION()).equals(true)) {
+                        History history = doc.toObject(History.class);
+
+                        dateVisualized.setText(dateFormat(history.getDateVisualized()));
+                    } else {
+                        Log.d(tag.getKEY_ERROR(), "No Document");
+
+                    }
+                } else {
+                    Log.d(tag.getKEY_ERROR(), "Error");
+                }
+            }
+        });
+
+
+    }
+
+    public static String dateFormat(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return simpleDateFormat.format(date);
     }
 
     private void getData() {
         final DocumentReference doc = firebaseFirestore.collection("History").document(history_id);
-        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        doc.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot documentSnapshot = task.getResult();
-                if (documentSnapshot.exists()) {
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(tag.getKEY_ERROR(), "Listen failed.", e);
+                    return;
+                }
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+
 
                     String name_company = documentSnapshot.getString(tag.getKEY_NAME_COMPANY());
                     companyName.setText(name_company);
@@ -86,36 +160,52 @@ public class SituationVagaActivity extends AppCompatActivity {
                     String max_salary = documentSnapshot.getString(tag.getKEY_MAX_SALARY());
                     maxSalary.setText(max_salary);
 
-                    String feedback_company = documentSnapshot.getString("Comment");
+                    String feedback_company = documentSnapshot.getString(tag.getKEY_FEEDBACK_COMMENT());
                     feedback.setText(feedback_company);
 
-                    if (task.getResult().getBoolean("Situation").equals(true)) {
-                        visualized.setTextColor(Color.parseColor("#009624"));
-                        linearLayout11.setBackgroundColor(Color.parseColor("#009624"));
-                        checked.setVisibility(View.VISIBLE);
-                        not_x.setVisibility(View.INVISIBLE);
-                        text_visualized.setTextColor(Color.parseColor("#009624"));
-                    } else if (task.getResult().getBoolean("Situation").equals(false)) {
-                        checked.setVisibility(View.GONE);
-                        not_x.setVisibility(View.VISIBLE);
+                    if (documentSnapshot.getString(tag.getKEY_FEEDBACK_YES_NO()).equals("")) {
+                        approved.setVisibility(View.GONE);
+                        refused.setVisibility(View.GONE);
+                        img_approved.setVisibility(View.GONE);
+                        img_refused.setVisibility(View.GONE);
                     }
-                    if (!task.getResult().getString("Comment").isEmpty()){
-                        checked2.setVisibility(View.VISIBLE);
-                        not_x2.setVisibility(View.INVISIBLE);
-                        linearLayout11.setBackgroundColor(Color.parseColor("#009624"));
-                        tv_empresa_feedback.setTextColor(Color.parseColor("#009624"));
-                        feedback.setTextColor(Color.parseColor("#009624"));
+                    if (documentSnapshot.getString(tag.getKEY_FEEDBACK_YES_NO()).equals(tag.getKEY_APPROVED())) {
+                        approved.setVisibility(View.VISIBLE);
+                        refused.setVisibility(View.GONE);
+                        img_approved.setVisibility(View.VISIBLE);
+                        img_refused.setVisibility(View.GONE);
+                    } else if (documentSnapshot.getString(tag.getKEY_FEEDBACK_YES_NO()).equals(tag.getKEY_REFUSED())) {
+                        approved.setVisibility(View.GONE);
+                        refused.setVisibility(View.VISIBLE);
+                        img_approved.setVisibility(View.GONE);
+                        img_refused.setVisibility(View.VISIBLE);
+                    }
+
+                    if (documentSnapshot.getBoolean(tag.getKEY_SITUATION()).equals(true)) {
+                        visualized.setTextColor(Color.parseColor("#009624"));
+                        collum_linear.setBackgroundColor(Color.parseColor("#009624"));
+                        checked.setVisibility(View.VISIBLE);
+                        not_checked.setVisibility(View.INVISIBLE);
+                    } else if (documentSnapshot.getBoolean("Situation").equals(false)) {
+                        checked.setVisibility(View.GONE);
+                        not_checked.setVisibility(View.VISIBLE);
+                    }
+                    if (!documentSnapshot.getString("Comment").isEmpty()) {
+                        checked_2.setVisibility(View.VISIBLE);
+                        not_checked_2.setVisibility(View.INVISIBLE);
+                        collum_linear.setBackgroundColor(Color.parseColor("#009624"));
+                        tv_company_feedback.setTextColor(Color.parseColor("#009624"));
                         finish.setVisibility(View.VISIBLE);
-                    }else {
-                        if (task.getResult().getString("Comment").isEmpty()){
-                            checked2.setVisibility(View.INVISIBLE);
-                            not_x2.setVisibility(View.VISIBLE);
-                            linearLayout11.setBackgroundColor(Color.parseColor("#AAAAAA"));
-                            tv_empresa_feedback.setTextColor(Color.parseColor("#AAAAAA"));
-                            feedback.setTextColor(Color.parseColor("#AAAAAA"));
+                    } else {
+                        if (documentSnapshot.getString("Comment").isEmpty()) {
+                            checked_2.setVisibility(View.INVISIBLE);
+                            not_checked_2.setVisibility(View.VISIBLE);
+                            collum_linear.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                            tv_company_feedback.setTextColor(Color.parseColor("#AAAAAA"));
                             finish.setVisibility(View.GONE);
                         }
                     }
+                } else {
                 }
             }
         });
@@ -125,11 +215,11 @@ public class SituationVagaActivity extends AppCompatActivity {
     private void findView() {
         companyName = findViewById(R.id.companyName);
         vagaName = findViewById(R.id.vagaName);
-        linearLayout11 = findViewById(R.id.linearLayout1);
+        collum_linear = findViewById(R.id.linearLayout11);
         checked = findViewById(R.id.checked);
-        not_x = findViewById(R.id.not_x);
-        checked2 = findViewById(R.id.checked2);
-        not_x2 = findViewById(R.id.not_x2);
+        not_checked = findViewById(R.id.not_x);
+        checked_2 = findViewById(R.id.checked2);
+        not_checked_2 = findViewById(R.id.not_x2);
         visualized = findViewById(R.id.visualized);
         back = findViewById(R.id.back);
         description = findViewById(R.id.description);
@@ -137,11 +227,17 @@ public class SituationVagaActivity extends AppCompatActivity {
         requirement = findViewById(R.id.requirement_vaga);
         minSalary = findViewById(R.id.min_salary);
         maxSalary = findViewById(R.id.max_salary);
-        text_visualized = findViewById(R.id.text_visualized);
         feedback = findViewById(R.id.feedback);
         time = findViewById(R.id.time);
-        tv_empresa_feedback = findViewById(R.id.tv_empresa_feedback);
+        tv_company_feedback = findViewById(R.id.tv_company_feedback);
         finish = findViewById(R.id.finish);
+        refused = findViewById(R.id.refused);
+        approved = findViewById(R.id.approved);
+        img_refused = findViewById(R.id.img_refused);
+        img_approved = findViewById(R.id.img_approved);
+        dateVisualized = findViewById(R.id.dateVisualized);
+        dateComment = findViewById(R.id.dateComment);
+        dateApply = findViewById(R.id.dateApply);
 
     }
 

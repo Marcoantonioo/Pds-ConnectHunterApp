@@ -1,6 +1,7 @@
 package com.example.connecthuntapp.Activitys;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SkillActivity extends AppCompatActivity {
+public class ProfessionalSkillActivity extends AppCompatActivity {
     private Spinner spinner;
     private ImageView back;
     private ImageView saveData;
@@ -36,7 +37,7 @@ public class SkillActivity extends AppCompatActivity {
 
 
         findView();
-        firebaseConfig();
+        fireBaseConfig();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,13 +48,28 @@ public class SkillActivity extends AppCompatActivity {
         saveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSkill();
+                if (validateFieldSkillName()) {
+                    addSkill();
+                }
             }
         });
 
     }
 
-    private void firebaseConfig() {
+    private boolean validateFieldSkillName() {
+        TextInputLayout errorSkillName = findViewById(R.id.errorSkillName);
+        String skill_name = errorSkillName.getEditText().getText().toString();
+
+        if (skill_name.isEmpty()) {
+            errorSkillName.setError("Preencha este campo");
+            return false;
+        } else {
+            errorSkillName.setError(null);
+            return true;
+        }
+    }
+
+    private void fireBaseConfig() {
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
@@ -62,7 +78,7 @@ public class SkillActivity extends AppCompatActivity {
     private void findView() {
         back = findViewById(R.id.back);
         saveData = findViewById(R.id.saveData);
-        edt_skill_name = findViewById(R.id.nomeCompetencia);
+        edt_skill_name = findViewById(R.id.skillName);
         spinner = findViewById(R.id.spinner1);
 
     }

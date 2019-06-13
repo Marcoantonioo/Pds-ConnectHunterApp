@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +21,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -44,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         findView();
-        firebaseConfig();
+        fireBaseConfig();
 
         txt_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private boolean validateEmail() {
         String email = errorEmail.getEditText().getText().toString().trim();
@@ -97,8 +97,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInUserWithEmailAndPassword() {
-        final Tags tag = new Tags();
-
         final String email = edit_email.getText().toString();
         final String password = edit_password.getText().toString();
 
@@ -112,19 +110,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            String user_id = mAuth.getCurrentUser().getUid();
-                            DocumentReference doc = firebaseFirestore.collection(tag.getKEY_USER()).document(user_id);
-                            doc.get()
-                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                            verifyUserCompany();
-                                            verifyUserProfessional();
-                                        }
-                                    });
+
+                            verifyUserCompany();
+                            verifyUserProfessional();
+
                         } else {
-                            String erro = task.getException().getMessage();
-                            Toast.makeText(getApplicationContext(), "Erro: " + erro, Toast.LENGTH_LONG).show();
+                            String error = task.getException().getMessage();
+                            Toast.makeText(getApplicationContext(), "Email inválido" + error, Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();
 
@@ -133,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    private void firebaseConfig() {
+    private void fireBaseConfig() {
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
     }

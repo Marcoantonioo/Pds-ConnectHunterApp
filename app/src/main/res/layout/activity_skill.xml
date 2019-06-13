@@ -60,22 +60,30 @@
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/nomeCompetencia"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/errorSkillName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Nome da Competência"
-        android:inputType="text"
-        android:textSize="15sp"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear" />
+        app:layout_constraintTop_toBottomOf="@+id/linear">
+
+        <EditText
+            android:id="@+id/skillName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Nome da Competência"
+            android:inputType="text"
+            android:textSize="15sp" />
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/textView19"
@@ -91,7 +99,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeCompetencia" />
+        app:layout_constraintTop_toBottomOf="@+id/errorSkillName" />
 
     <Spinner
         android:id="@+id/spinner1"

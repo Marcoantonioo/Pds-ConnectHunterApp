@@ -22,8 +22,8 @@
         <activity android:name=".Activitys.CompanyAboutActivity" />
         <activity android:name=".Activitys.CompanyDescriptionActivity" />
         <activity android:name=".Activitys.DeficiencyActivity" />
-        <activity android:name=".Activitys.SkillActivity" />
-        <activity android:name=".Activitys.ExperienceProfessionalActivity" />
+        <activity android:name=".Activitys.ProfessionalSkillActivity" />
+        <activity android:name=".Activitys.ProfessionalExperienceActivity" />
         <activity android:name=".Activitys.ProfessionalPersonalDataActivity" />
         <activity android:name=".Activitys.ProfessionalGoalActivity" />
         <activity android:name=".Activitys.MainCompanyActivity" />

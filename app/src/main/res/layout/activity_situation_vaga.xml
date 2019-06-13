@@ -1,423 +1,524 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:scrollbars="none">
+    android:background="@color/cinza_fraco"
+    android:orientation="vertical">
 
-
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
-
-        <ImageView
-            android:id="@+id/not_x2"
-            android:layout_width="22dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-            app:srcCompat="@mipmap/ic_action_x" />
-
-        <ImageView
-            android:id="@+id/checked2"
-            android:layout_width="25dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="25dp"
-            android:src="@mipmap/ic_action_checked"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
-
-
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:background="@color/weakBlack"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ic_action_back_white" />
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
 
-            <TextView
-                android:id="@+id/number_vagas"
+            <LinearLayout
+                android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="Situação da Vaga"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:background="@color/weakBlack"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_action_back_white" />
+
+                <TextView
+                    android:id="@+id/number_vagas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
+                    android:text="Situação da Candidatura"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/linear_border"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/companyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Ulbra Torres"
+                    android:textColor="@color/weakBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/vagaName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Analista de Sistemas"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/linear_border"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Status da Candidatura"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="25dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView38"
+                        app:srcCompat="@mipmap/ic_professioanl_profile" />
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Candidatura Enviada"
+                        android:textColor="@color/green"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.005"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Sua candidatura foi enviada para à Empresa"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/cancel"
+                        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                    <LinearLayout
+                        android:id="@+id/cancel"
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#009624"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/not_x"
+                        android:layout_width="22dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cancel"
+                        app:srcCompat="@mipmap/ic_action_x" />
+
+                    <TextView
+                        android:id="@+id/visualized"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="44dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Currículo Visualizado"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.005"
+                        app:layout_constraintStart_toEndOf="@+id/not_x"
+                        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#aaa"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/not_x">
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/checked"
+                        android:layout_width="25dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@mipmap/ic_eye_curriculum"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cancel" />
+
+                    <TextView
+                        android:id="@+id/text_visualized"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="A Empresa Visualizou seu Currículo"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout1"
+                        app:layout_constraintTop_toBottomOf="@+id/visualized" />
+
+                    <ImageView
+                        android:id="@+id/not_x2"
+                        android:layout_width="22dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
+                        app:srcCompat="@mipmap/ic_action_x" />
+
+                    <ImageView
+                        android:id="@+id/checked2"
+                        android:layout_width="25dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@mipmap/ic_check_finish"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+                    <TextView
+                        android:id="@+id/tv_company_feedback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="38dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="A Empresa Enviou  um Feedback"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toStartOf="@+id/dateComment"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/not_x2"
+                        app:layout_constraintTop_toBottomOf="@+id/text_visualized" />
+
+                    <TextView
+                        android:id="@+id/dateVisualized"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textSize="12sp"
+                        android:textColor="@color/green"
+                        app:layout_constraintBottom_toBottomOf="@+id/visualized"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/visualized" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout11"
+                        android:layout_width="0.6dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="36dp"
+                        android:layout_marginTop="8dp"
+                        android:background="#aaa"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/not_x2"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/feedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="63dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout11"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_company_feedback" />
+
+                    <TextView
+                        android:id="@+id/finish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Candidatura Finalizada"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/feedback"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/approved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Você atende aos requisitos da Empresa!"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_approved"
+                        app:layout_constraintStart_toEndOf="@+id/img_approved"
+                        app:layout_constraintTop_toTopOf="@+id/img_approved"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/refused"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Você não atende aos requisitos da Empresa!"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_refused"
+                        app:layout_constraintStart_toEndOf="@+id/img_refused"
+                        app:layout_constraintTop_toTopOf="@+id/img_refused" />
+
+                    <ImageView
+                        android:id="@+id/img_refused"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/clear"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/finish" />
+
+                    <ImageView
+                        android:id="@+id/img_approved"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@mipmap/ic_check_finish"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/finish" />
+
+                    <TextView
+                        android:id="@+id/dateComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:textColor="@color/green"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_company_feedback"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_company_feedback" />
+
+                    <TextView
+                        android:id="@+id/dateApply"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textSize="12sp"
+                        android:textColor="@color/green"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView39"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView39" />
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/linear_border"
+                android:orientation="vertical"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Sobre a Empresa"
+                    android:textColor="@color/weakBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/about_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="26dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Descrição"
+                    android:textColor="@color/weakBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="26dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textView47"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Requisitos"
+                    android:textColor="@color/weakBlack"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/requirement_vaga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="26dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="26dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Salário Máximo"
+                        android:textColor="@color/weakBlack"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView50"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:gravity="right"
+                        android:text="Salário Mínimo"
+                        android:textColor="@color/weakBlack"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="26dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/max_salary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/min_salary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:gravity="right"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/companyName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"            android:textColor="@color/weakBlack"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear" />
-
-        <TextView
-            android:id="@+id/vagaName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/companyName" />
-
-        <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
-            android:text="Status da Candidatura"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vagaName" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="25dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView38"
-            app:srcCompat="@mipmap/ic_action_checked" />
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:text="Candidatura Enviada"
-            android:textSize="13dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@color/green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView38" />
-
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:text="Sua candidatura foi enviada para a Empresa"
-            android:textColor="@color/green"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.008"
-            app:layout_constraintStart_toEndOf="@+id/cancel"
-            app:layout_constraintTop_toBottomOf="@+id/textView39" />
-
-        <LinearLayout
-            android:id="@+id/cancel"
-            android:layout_width="1dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="36dp"
-            android:background="#009624"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/not_x"
-            android:layout_width="22dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancel"
-            app:srcCompat="@mipmap/ic_action_x" />
-
-        <TextView
-            android:id="@+id/visualized"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:text="Currículo Visualizado"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="#AAAAAA"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.013"
-            app:layout_constraintStart_toEndOf="@+id/not_x"
-            app:layout_constraintTop_toBottomOf="@+id/textView40" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="1dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="2dp"
-            android:background="#aaa"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/not_x">
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/checked"
-            android:layout_width="25dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="24dp"
-            android:src="@mipmap/ic_action_checked"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cancel" />
-
-        <TextView
-            android:id="@+id/text_visualized"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="A Empresa Visualizou seu Currículo"
-            android:textColor="#AAAAAA"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.072"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout1"
-            app:layout_constraintTop_toBottomOf="@+id/visualized" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="0.6dp"
-            android:layout_marginTop="56dp"
-            android:background="@color/blue"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/feedback">
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView45"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="4dp"
-            android:text="Descrição"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@color/weakBlack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_company" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="26dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView45" />
-
-        <TextView
-            android:id="@+id/textView47"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="4dp"
-            android:text="Requisitos"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@color/weakBlack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
-
-        <TextView
-            android:id="@+id/requirement_vaga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="26dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView47" />
-
-        <TextView
-            android:id="@+id/textView49"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:text="Salário Máximo"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@color/weakBlack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/requirement_vaga" />
-
-        <TextView
-            android:id="@+id/textView50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/weakBlack"
-            android:text="Salário Mínimo"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/requirement_vaga" />
-
-        <TextView
-            android:id="@+id/max_salary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView49" />
-
-        <TextView
-            android:id="@+id/min_salary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView50" />
-
-        <TextView
-            android:id="@+id/textView53"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="10dp"
-            android:text="Sobre a Empresa"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@color/weakBlack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
-
-        <TextView
-            android:id="@+id/about_company"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginEnd="26dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView53" />
-
-        <TextView
-            android:id="@+id/tv_empresa_feedback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="A Empresa escreveu o Feedback"
-            android:textColor="#AAAAAA"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/not_x2"
-            app:layout_constraintTop_toBottomOf="@+id/text_visualized" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout11"
-            android:layout_width="0.6dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="36dp"
-            android:background="#aaa"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/not_x2">
-
-        </LinearLayout>
+</LinearLayout>
 
 
-        <TextView
-            android:id="@+id/feedback"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:textSize="13sp"
-            android:fontFamily="sans-serif-condensed-light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.041"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout11"
-            app:layout_constraintTop_toBottomOf="@+id/tv_empresa_feedback" />
-
-        <TextView
-            android:id="@+id/finish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="Candidatura Finalizada"
-            android:textColor="@color/green"
-            android:textSize="16sp"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/feedback" />
-
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>

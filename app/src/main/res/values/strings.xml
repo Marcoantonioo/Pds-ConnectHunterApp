@@ -12,7 +12,7 @@
     <string name="connect">Connective Hunter</string>
     <string name="signup">Cria Conta</string>
     <string name="professional">Profissional</string>
-    <string name="company">Company</string>
+    <string name="company">Empresa</string>
     <string name="reg_pass_text">Senha</string>
     <string name="recup_senha">Recuperar Senha</string>
     <string name="email_recup">Informe seu Email</string>
@@ -25,6 +25,8 @@
     <string name="my_vacancy">Minha Vaga</string>
     <string name="curriculum_view">A empresa visualizou seu curriculo</string>
     <string name="send_email">Enviar</string>
+    <string name="approved">Sim, o candidato atende aos requisitos da empresa!</string>
+    <string name="refused">Não, o candidato não atende aos requisitos da empresa!</string>
 
 
     <string-array name="grau_competencia">

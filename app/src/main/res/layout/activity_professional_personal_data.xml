@@ -79,11 +79,11 @@
                 android:id="@+id/edt_nascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:hint="DD/MM/YYYY"
-                android:inputType="date"
-                android:textSize="15sp" />
+                android:fontFamily="sans-serif-light"
+                android:lines="1"
+                android:textSize="14sp"
+                android:hint="Nascimento (DD/MM/YYYY)"
+                android:inputType="date" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -103,12 +103,12 @@
                 android:id="@+id/edt_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:hint="Seu Nome"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:lines="1"
-                android:textSize="15sp" />
+                android:textSize="14sp"
+                android:hint="Nome"
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -127,12 +127,11 @@
                 android:id="@+id/edt_profissao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:hint="Qual sua profissao?"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:lines="1"
-                android:textSize="15sp" />
+                android:textSize="14sp"
+                android:hint="Profissão" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -152,12 +151,12 @@
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
                 android:focusable="false"
-                android:fontFamily="sans-serif"
-                android:hint="Seu Email?"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textEmailAddress"
-                android:textSize="13sp" />
+                android:lines="1"
+                android:textSize="14sp"
+                android:hint="Email" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -178,13 +177,12 @@
                 android:id="@+id/edt_cel_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:gravity="left"
-                android:hint="Seu Telefone"
-                android:maxLength="11"
+                android:fontFamily="sans-serif-light"
                 android:inputType="number"
-                android:textSize="13sp" />
+                android:lines="1"
+                android:textSize="14sp"
+                android:hint="Telefone"
+                android:maxLength="11" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -203,13 +201,12 @@
                 android:id="@+id/edt_tel_residencial_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:gravity="left"
-                android:maxLength="10"
-                android:hint="Seu Telefone Residencial, caso tiver"
+                android:fontFamily="sans-serif-light"
                 android:inputType="number"
-                android:textSize="13sp" />
+                android:lines="1"
+                android:textSize="14sp"
+                android:maxLength="10"
+                android:hint="Telefone Residêncial (opcional)" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -229,11 +226,11 @@
                 android:id="@+id/edt_cidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:hint="Qual sua Cidade"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
-                android:textSize="13sp" />
+                android:lines="1"
+                android:textSize="14sp"
+                android:hint="Cidade / Estado"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -252,11 +249,11 @@
                 android:id="@+id/edt_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:fontFamily="sans-serif"
-                android:hint="Qual seu endereço?"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
-                android:textSize="15sp" />
+                android:lines="1"
+                android:textSize="14sp"
+                android:hint="Endereço, Número" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -275,9 +272,8 @@
                 android:id="@+id/edt_cep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
                 android:fontFamily="sans-serif"
-                android:hint="Seu CEP"
+                android:hint="CEP"
                 android:maxLength="9"
                 android:inputType="number"
                 android:textSize="13sp" />
@@ -291,7 +287,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
             android:hint="Dados Pessoais"
-            android:textSize="13dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -304,7 +300,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:hint="Endereço"
-            android:textSize="13sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -316,8 +312,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Informações de Contato"
-            android:textSize="13sp"
+            android:hint="Contato"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

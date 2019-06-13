@@ -36,16 +36,15 @@
             android:textSize="13sp" />
 
         <TextView
-            android:id="@+id/timestamp"
+            android:id="@+id/dateJob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/companyName"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="end"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
-            android:gravity="end"
-            android:text="01/06/2019"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textSize="12sp"
-            android:layout_toEndOf="@id/companyName"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/nameVaga"

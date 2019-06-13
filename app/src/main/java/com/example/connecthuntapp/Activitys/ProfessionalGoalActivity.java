@@ -104,7 +104,7 @@ public class ProfessionalGoalActivity extends AppCompatActivity {
 
     private void findView() {
         saveData = findViewById(R.id.saveData);
-        goal = findViewById(R.id.goal);
+        goal = findViewById(R.id.tv_goal);
         back = findViewById(R.id.back);
         errorGoal = findViewById(R.id.errorGoal);
     }

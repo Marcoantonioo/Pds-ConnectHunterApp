@@ -20,6 +20,10 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class VagaAdapter extends FirestoreRecyclerAdapter<Vaga, VagaAdapter.VagaHolder> {
     private Tags tag = new Tags();
@@ -36,6 +40,16 @@ public class VagaAdapter extends FirestoreRecyclerAdapter<Vaga, VagaAdapter.Vaga
         holder.status.setText(model.getStatus());
 
         Picasso.get().load(model.getLogo_company()).into(holder.logo_image);
+
+
+        Date date = model.getDateJob();
+
+        if (date != null){
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String createDate = simpleDateFormat.format(date);
+            holder.timestamp.setText(createDate);
+        }
+
 
 
 
@@ -100,7 +114,7 @@ public class VagaAdapter extends FirestoreRecyclerAdapter<Vaga, VagaAdapter.Vaga
             unvailable = itemView.findViewById(R.id.unvailable);
             completed = itemView.findViewById(R.id.completed);
             btnApplication = itemView.findViewById(R.id.btnApplication);
-            timestamp = itemView.findViewById(R.id.timestamp);
+            timestamp = itemView.findViewById(R.id.dateJob);
         }
     }
 }

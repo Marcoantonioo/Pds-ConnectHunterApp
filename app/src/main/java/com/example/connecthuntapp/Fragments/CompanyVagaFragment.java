@@ -19,7 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -76,6 +76,7 @@ public class CompanyVagaFragment extends Fragment {
             available, unavailable, completed;
     private TextView city, job_name, company_name, max_salary, min_salary, benefit, description, requirement, about_company, status;
 
+    private CheckBox cb_show;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,6 +143,8 @@ public class CompanyVagaFragment extends Fragment {
         getAboutData();
         getStatusData();
         getPhotoLogo();
+        getJobData();
+
 
         setAlertBasicInfo();
         setAlertAbout();
@@ -149,13 +152,56 @@ public class CompanyVagaFragment extends Fragment {
         setAlertDescription();
         setAlertRequirement();
 
+        cb_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setShowJob();
+            }
+        });
+
 
         return v;
     }
 
+    private void getJobData() {
+        firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot doc = task.getResult();
+                    if (doc.exists()) {
+                        if (doc.getBoolean(tag.getKEY_SHOW_JOB()).equals(true)) {
+                            cb_show.setChecked(true);
+                        } else {
+                            cb_show.setChecked(false);
+                        }
+                    }else {
+                        Log.d(tag.getKEY_ERROR(),"No document");
+                    }
+                }
+            }
+        });
+    }
+
+    private void setShowJob(){
+        final boolean show = cb_show.isChecked();
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(tag.getKEY_SHOW_JOB(),show);
+
+        firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+    }
+
+
     private void getPhotoLogo() {
         DocumentReference doc = firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id);
-                doc.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        doc.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
 
@@ -235,7 +281,6 @@ public class CompanyVagaFragment extends Fragment {
                     case 0:
                         Map<String, Object> map_1 = new HashMap<>();
                         map_1.put(tag.getKEY_JOB_STATUS(), values[0]);
-                        map_1.put("showVaga",true);
                         firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id)
                                 .update(map_1).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -347,9 +392,6 @@ public class CompanyVagaFragment extends Fragment {
 
                 });
     }
-
-
-
 
     private void setAlertAbout() {
         firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id)
@@ -745,6 +787,7 @@ public class CompanyVagaFragment extends Fragment {
         btn_select_img = v.findViewById(R.id.btn_select_img);
         logo_image = v.findViewById(R.id.logo_image);
         progressBar = v.findViewById(R.id.progressBar);
+        cb_show = v.findViewById(R.id.cb_show);
 
 
     }

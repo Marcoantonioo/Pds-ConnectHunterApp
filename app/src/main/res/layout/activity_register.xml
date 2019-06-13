@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.RegisterActivity"
-    android:background="@color/white">
+    android:background="@color/cinza_fraco"
+    tools:context=".Activitys.RegisterActivity">
 
     <ImageView
         android:id="@+id/back"
@@ -13,17 +13,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/ic_action_blue_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_action_blue_back" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Selecione um tipo usuário"
+        android:textColor="@color/weakBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="303dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +45,15 @@
         <RadioButton
             android:id="@+id/rbProfessional"
             android:layout_width="108dp"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@color/whiteTransparentHalf"
-            android:fontFamily="sans-serif-condensed"
+            android:drawableBottom="@mipmap/ic_professional"
+            android:fontFamily="sans-serif-light"
             android:gravity="center"
+            android:paddingBottom="16dp"
             android:text="@string/professional"
             android:textColor="@drawable/radio_flat_text_selector" />
 
@@ -50,32 +65,32 @@
             android:layout_weight="1"
             android:background="@drawable/radio_flat_selector"
             android:button="@color/whiteTransparentHalf"
-            android:fontFamily="sans-serif-condensed"
+            android:drawableBottom="@mipmap/ic_company"
+            android:fontFamily="sans-serif-light"
             android:gravity="center"
+            android:paddingBottom="16dp"
             android:text="@string/company"
             android:textColor="@drawable/radio_flat_text_selector" />
     </RadioGroup>
 
-    <FrameLayout
-        android:id="@+id/fragmentRegister"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/linear_border"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"/>
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Selecione um tipo de conta"
-        android:textColor="@color/weakBlack"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toTopOf="parent" />
+        <FrameLayout
+            android:id="@+id/fragmentRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

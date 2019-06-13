@@ -40,11 +40,23 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<History, HistoryAda
             }
         });
 
-        if (model.isSituation()) {
-            holder.visualized_ok.setVisibility(View.VISIBLE);
-        } else {
-            holder.visualized_ok.setVisibility(View.GONE);
+        if (!model.getComment().equals("")){
+            holder.finish.setVisibility(View.VISIBLE);
+        }else {
+            holder.finish.setVisibility(View.INVISIBLE);
         }
+        if (model.isSituation()) {
+            holder.visualized_wating.setVisibility(View.GONE);
+            holder.tv_visualized.setVisibility(View.VISIBLE);
+            holder.curriculum_visualized.setVisibility(View.VISIBLE);
+            holder.curriculum_not_visualized.setVisibility(View.GONE);
+        }else {
+            holder.visualized_wating.setVisibility(View.VISIBLE);
+            holder.tv_visualized.setVisibility(View.GONE);
+            holder.curriculum_visualized.setVisibility(View.GONE);
+            holder.curriculum_not_visualized.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @NonNull
@@ -58,18 +70,22 @@ public class HistoryAdapter extends FirestoreRecyclerAdapter<History, HistoryAda
     class HistoryHolder extends RecyclerView.ViewHolder{
         TextView vagaName;
         TextView companyName;
-        TextView visualized_ok;
-        TextView city;
-        ImageView logo_company;
+        TextView visualized_wating;
+        TextView city, finish, tv_visualized;
+        ImageView logo_company, curriculum_visualized, curriculum_not_visualized;
 
         public HistoryHolder(@NonNull View itemView) {
             super(itemView);
 
             logo_company = itemView.findViewById(R.id.logo_company);
             vagaName = itemView.findViewById(R.id.vaga_name);
-            visualized_ok = itemView.findViewById(R.id.visualized_ok);
+            visualized_wating = itemView.findViewById(R.id.visualized_wating);
+            tv_visualized = itemView.findViewById(R.id.tv_visualized);
             companyName = itemView.findViewById(R.id.company_name);
             city = itemView.findViewById(R.id.city);
+            finish = itemView.findViewById(R.id.finish);
+            curriculum_visualized = itemView.findViewById(R.id.curriculum_visualized);
+            curriculum_not_visualized = itemView.findViewById(R.id.curriculum_not_visualized);
         }
     }
 }

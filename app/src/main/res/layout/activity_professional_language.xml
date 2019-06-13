@@ -5,16 +5,14 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/white">
-
-
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="#1e88e5"
+        android:background="@color/weakBlack"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="10dp"
@@ -24,40 +22,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_action_back_white" />
-
-        <TextView
-            android:id="@+id/number_vagas"
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_toRightOf="@id/back"
-            android:gravity="center"
-            android:text="Adicionar Idioma"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:id="@+id/linear2"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/number_vagas"
-            android:gravity="right"
-            android:orientation="vertical"
-            android:paddingEnd="16dp">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_action_back_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/number_vagas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Idiômas"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/saveData"
+                app:layout_constraintStart_toEndOf="@+id/back"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <ImageView
                 android:id="@+id/saveData"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_action_done_white" />
-        </LinearLayout>
-
-    </RelativeLayout>
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_action_done_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 
     <TextView

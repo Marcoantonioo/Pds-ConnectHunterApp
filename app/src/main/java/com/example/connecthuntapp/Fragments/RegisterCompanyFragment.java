@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class RegisterCompanyFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_register_company, container, false);
 
         findView(v);
-        firebaseConfig();
+        fireBaseConfig();
 
         mBtnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +108,7 @@ public class RegisterCompanyFragment extends Fragment {
         errorPassword = v.findViewById(R.id.errorPassword);
     }
 
-    private void firebaseConfig() {
+    private void fireBaseConfig() {
         mAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
@@ -166,6 +166,8 @@ public class RegisterCompanyFragment extends Fragment {
 
         Map<String, Object> vaga = new HashMap<>();
         vaga.put(tag.getKEY_USER_ID(), user_id);
+        vaga.put(tag.getKEY_JOB_DATE(), FieldValue.serverTimestamp());
+        vaga.put(tag.getKEY_SHOW_JOB(),false);
 
         firebaseFirestore.collection(tag.getKEY_VAGA()).document(user_id)
                 .set(vaga).addOnCompleteListener(new OnCompleteListener<Void>() {

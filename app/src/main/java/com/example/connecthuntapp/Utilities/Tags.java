@@ -4,6 +4,12 @@ public class Tags {
 
     /*Other Tags */
 
+    private String KEY_SHOW_JOB = "showVaga";
+    private String KEY_JOB_DATE = "dateJob";
+    private String KEY_CADIDATURE_DATE = "date";
+    private String KEY_FEEDBACK_YES_NO = "FeedbackYesNo";
+    private String KEY_APPROVED = "Sim, o candidato atende aos requisitos da empresa!";
+    private String KEY_REFUSED = "Não, o candidato não atende aos requisitos da empresa!";
     private String KEY_AVAILABLE = "Disponivel";
     private String KEY_UNAVAILABLE = "Indisponivel no Momento";
     private String KEY_COMPLETED = "Preenchida";
@@ -16,7 +22,7 @@ public class Tags {
 
     /*Collection Tags*/
 
-    private String KEY_USER_PROFESSIONAL = "Professionais";
+    private String KEY_CANDIDATE = "Candidatos";
     private String KEY_ABOUT_COMPANY = "about_company";
     private String KEY_USER = "Users";
     private String KEY_CURRICULUM = "Curriculum";
@@ -96,6 +102,54 @@ public class Tags {
     private String KEY_DEFICIENCY_HEARING = "hearing";
     private String KEY_DEFICIENCY_NONE = "none";
 
+    public String getKEY_SHOW_JOB() {
+        return KEY_SHOW_JOB;
+    }
+
+    public void setKEY_SHOW_JOB(String KEY_SHOW_JOB) {
+        this.KEY_SHOW_JOB = KEY_SHOW_JOB;
+    }
+
+    public String getKEY_JOB_DATE() {
+        return KEY_JOB_DATE;
+    }
+
+    public void setKEY_JOB_DATE(String KEY_JOB_DATE) {
+        this.KEY_JOB_DATE = KEY_JOB_DATE;
+    }
+
+    public String getKEY_CADIDATURE_DATE() {
+        return KEY_CADIDATURE_DATE;
+    }
+
+    public void setKEY_CADIDATURE_DATE(String KEY_CADIDATURE_DATE) {
+        this.KEY_CADIDATURE_DATE = KEY_CADIDATURE_DATE;
+    }
+
+    public String getKEY_APPROVED() {
+        return KEY_APPROVED;
+    }
+
+    public void setKEY_APPROVED(String KEY_APPROVED) {
+        this.KEY_APPROVED = KEY_APPROVED;
+    }
+
+    public String getKEY_REFUSED() {
+        return KEY_REFUSED;
+    }
+
+    public String getKEY_FEEDBACK_YES_NO() {
+        return KEY_FEEDBACK_YES_NO;
+    }
+
+    public void setKEY_FEEDBACK_YES_NO(String KEY_FEEDBACK_YES_NO) {
+        this.KEY_FEEDBACK_YES_NO = KEY_FEEDBACK_YES_NO;
+    }
+
+    public void setKEY_REFUSED(String KEY_REFUSED) {
+        this.KEY_REFUSED = KEY_REFUSED;
+    }
+
     public String getKEY_FEEDBACK_COMMENT() {
         return KEY_FEEDBACK_COMMENT;
     }
@@ -120,13 +174,14 @@ public class Tags {
         this.KEY_PERSONAL_DATA = KEY_PERSONAL_DATA;
     }
 
-    public String getKEY_USER_PROFESSIONAL() {
-        return KEY_USER_PROFESSIONAL;
+    public String getKEY_CANDIDATE() {
+        return KEY_CANDIDATE;
     }
 
-    public void setKEY_USER_PROFESSIONAL(String KEY_USER_PROFESSIONAL) {
-        this.KEY_USER_PROFESSIONAL = KEY_USER_PROFESSIONAL;
+    public void setKEY_CANDIDATE(String KEY_CANDIDATE) {
+        this.KEY_CANDIDATE = KEY_CANDIDATE;
     }
+
 
     public String getKEY_BENEFIT() {
         return KEY_BENEFIT;

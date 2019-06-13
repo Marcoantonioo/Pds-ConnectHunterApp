@@ -1,17 +1,39 @@
 package com.example.connecthuntapp.Models;
 
+import java.util.Date;
+
 public class Candidato {
 
     private String name;
     private String description;
     private String profileUrl;
+    private String Comment;
+    private Date date;
 
     public Candidato(){}
 
-    public Candidato(String name, String description, String profileUrl) {
+    public Candidato(String name, String description, String profileUrl, String Comment, Date date) {
         this.name = name;
         this.description = description;
         this.profileUrl = profileUrl;
+        this.Comment = Comment;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
     }
 
     public String getProfileUrl() {

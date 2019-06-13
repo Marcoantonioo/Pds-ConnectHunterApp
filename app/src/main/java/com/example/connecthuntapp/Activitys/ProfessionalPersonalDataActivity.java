@@ -91,13 +91,10 @@ public class ProfessionalPersonalDataActivity extends AppCompatActivity {
     private boolean validateCelResidential() {
         String cel_residential = error_cel_residential.getEditText().getText().toString().trim();
 
-        if (cel_residential.isEmpty()) {
-            error_cel_residential.setError("Preencha esse campo");
-            return false;
-        } else if (cel_residential.length() < 10) {
+        if (cel_residential.length() < 10) {
             error_cel_residential.setError("Número inválido");
             return false;
-        }else {
+        } else {
             error_cel_residential.setError(null);
             return android.util.Patterns.PHONE.matcher(cel_residential).matches();
         }
@@ -109,10 +106,10 @@ public class ProfessionalPersonalDataActivity extends AppCompatActivity {
         if (cel_phon.isEmpty()) {
             error_cel_phone.setError("Preencha esse campo");
             return false;
-        } else if (cel_phon.length() < 11){
+        } else if (cel_phon.length() < 11) {
             error_cel_phone.setError("Número Inválido");
             return false;
-        }else {
+        } else {
             error_cel_phone.setError(null);
             return true;
         }
@@ -124,22 +121,23 @@ public class ProfessionalPersonalDataActivity extends AppCompatActivity {
         if (cep.isEmpty()) {
             error_cep.setError("Preencha esse campo");
             return false;
-        } else if (cep.length() < 9 ) {
+        } else if (cep.length() < 9) {
             error_cep.setError("Cep inválido");
             return false;
-        }else {
+        } else {
             error_cep.setError(null);
             return true;
         }
     }
-    public Boolean checkDateFormat(String date){
+
+    public Boolean checkDateFormat(String date) {
         if (date == null || !date.matches("^(1[0-9]|0[1-9]|3[0-1]|2[1-9])/(0[1-9]|1[0-2])/[0-9]{4}$"))
             return false;
-        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         try {
             format.parse(date);
             return true;
-        }catch (ParseException e){
+        } catch (ParseException e) {
             return false;
         }
     }

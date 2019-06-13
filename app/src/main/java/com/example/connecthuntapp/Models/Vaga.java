@@ -1,10 +1,5 @@
 package com.example.connecthuntapp.Models;
 
-import android.support.design.widget.TextInputLayout;
-import android.view.View;
-
-import com.example.connecthuntapp.R;
-
 import java.util.Date;
 
 public class Vaga {
@@ -16,11 +11,11 @@ public class Vaga {
     private String min_salary;
     private String max_salary;
     private String about_company;
-    private Date timestamp;
+    private Date dateJob;
 
     public Vaga(){}
 
-    public Vaga(String nameVaga, String companyName, String logo_company, String status, String city, String min_salary, String max_salary, String about_company, Date timestamp) {
+    public Vaga(String nameVaga, String companyName, String logo_company, String status, String city, String min_salary, String max_salary, String about_company, Date dateJob) {
         this.nameVaga = nameVaga;
         this.CompanyName = companyName;
         this.logo_company = logo_company;
@@ -29,15 +24,15 @@ public class Vaga {
         this.min_salary = min_salary;
         this.max_salary = max_salary;
         this.about_company = about_company;
-        this.timestamp = timestamp;
+        this.dateJob = dateJob;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getDateJob() {
+        return dateJob;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setDateJob(Date dateJob) {
+        this.dateJob = dateJob;
     }
 
     public String getNameVaga() {
